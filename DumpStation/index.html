@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Logging...</title>
+  <script>
+    fetch("https://default51141e2a0c994174ab63b49e4ba8e0.c8.environment.api.powerplatform.com:443/powerautomate/automations/direct/workflows/6cb85941eeb34e3099db4cc79949f164/triggers/manual/paths/invoke/?api-version=1&tenantId=tId&environmentName=Default-51141e2a-0c99-4174-ab63-b49e4ba8e0c8&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=QSAOS6ChB5hMNFLaEbOoJOFVEnaZvp-z1rxxYYgBnXY", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        name: "Dump Station",
+        timestamp: new Date().toISOString()
+      })
+    })
+    .then(response => {
+      document.body.innerHTML = "<h1>✅ Logged Successfully</h1>";
+    })
+    .catch(error => {
+      document.body.innerHTML = "<h1>❌ Error Logging</h1>";
+    });
+  </script>
+</head>
+<body>
+  <p>Logging scan data...</p>
+</body>
+</html>
