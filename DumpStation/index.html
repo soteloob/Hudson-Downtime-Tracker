@@ -2,14 +2,24 @@
 <html>
 <head>
   <title>Logging...</title>
+</head>
+<body>
+  <form id="autoForm" method="POST" action="https://yourserver.com/endpoint">
+    <input type="hidden" name="name" id="nameInput" />
+    <input type="hidden" name="timestamp" id="timestampInput" />
+  </form>
+
   <script>
-    fetch("https://default51141e2a0c994174ab63b49e4ba8e0.c8.environment.api.powerplatform.com:443/powerautomate/automations/direct/workflows/6cb85941eeb34e3099db4cc79949f164/triggers/manual/paths/invoke/?api-version=1&tenantId=tId&environmentName=Default-51141e2a-0c99-4174-ab63-b49e4ba8e0c8&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=QSAOS6ChB5hMNFLaEbOoJOFVEnaZvp-z1rxxYYgBnXY", {
+    const params = new URLSearchParams(window.location.search);
+    const name = params.get("name");
+
+fetch("https://default51141e2a0c994174ab63b49e4ba8e0.c8.environment.api.powerplatform.com:443/powerautomate/automations/direct/workflows/6cb85941eeb34e3099db4cc79949f164/triggers/manual/paths/invoke/?api-version=1&tenantId=tId&environmentName=Default-51141e2a-0c99-4174-ab63-b49e4ba8e0c8&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=QSAOS6ChB5hMNFLaEbOoJOFVEnaZvp-z1rxxYYgBnXY", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
       },
       body: JSON.stringify({
-        name: "Dump Station",
+        name: name,
         timestamp: new Date().toISOString()
       })
     })
@@ -20,8 +30,5 @@
       document.body.innerHTML = "<h1>❌ Error Logging</h1>";
     });
   </script>
-</head>
-<body>
-  <p>Logging scan data...</p>
 </body>
 </html>
